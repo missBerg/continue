@@ -1,0 +1,34 @@
+---
+title: "Documentation Automation with Continue CLI"
+sidebarTitle: "Documentation Automation with Continue CLI"
+description: "Learn how to use Continue CLI to automate documentation workflows."
+---
+
+This guide shows you how to integrate Continue CLI into GitHub Actions workflows to automatically analyze code changes and generate documentation. You'll learn the essential CLI flags and how headless mode works for automation.
+
+## Why Automate Documentation?
+
+- It's often easier to review documentation than write it
+- Documentation is important because code changes only shows how something works, not why you should use it
+- Documentation is a great way to share knowledge with your team, and if you can kickstart the process with AI, it's a win-win
+
+## Two-Stage Approach
+
+Breaking documentation automation into two stages makes it more reliable and maintainable:
+
+**Stage 1: Analysis**
+- AI examines code changes
+- Identifies what documentation is needed
+- Leverage AI to create a prompt for the next stage
+
+**Example CLI command**:
+```bash
+cn --auto "Generate a prompt for writing documentation for an end user who wants to use the features introduced by the changes that this branch would add if merged to main" -p
+```
+
+**Stage 2: Generation**
+- AI creates documentation based on the peompr from the first stage
+- Leverage custom rules to ensure consistency in documentation
+- Submit documentation via pull requests
+
+You can use the CLI on your own computer or integrate it into your CI/CD pipeline. IF you integrate it into your CI/CD pipeline, use the `--auto` flag to automatically approve the tools being used.
