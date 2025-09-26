@@ -569,6 +569,11 @@ export async function chat(prompt?: string, options: ChatOptions = {}) {
 
     // Run headless mode
     await runHeadlessMode(prompt, options);
+
+    // Exit gracefully after successful completion in headless mode
+    if (options.headless) {
+      await gracefulExit(0);
+    }
   } catch (error: any) {
     const err = error instanceof Error ? error : new Error(String(error));
 
